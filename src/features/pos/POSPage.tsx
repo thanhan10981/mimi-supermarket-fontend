@@ -54,14 +54,14 @@ export default function POSPage() {
   };
 
   return (
-    <Layout style={{ height: "100vh" }}>
-      <Content style={{ display: "flex" }}>
-        {/* Hóa đơn */}
-        <CartPanel cart={cart} onQtyChange={updateQty} />
-
-        {/* Danh sách sản phẩm */}
-        <ProductGrid products={mockProducts} onAdd={addToCart} />
-      </Content>
-    </Layout>
+    <div
+      style={{
+        display: "flex",
+        height: "100%",   // 🔥 QUAN TRỌNG
+      }}
+    >
+      <CartPanel cart={cart} onQtyChange={updateQty} />
+      <ProductGrid products={mockProducts} onAdd={addToCart} />
+    </div>
   );
 }
