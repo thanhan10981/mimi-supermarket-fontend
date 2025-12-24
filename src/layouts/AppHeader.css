@@ -1,0 +1,43 @@
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 56px;
+  background: linear-gradient(90deg, #0b5ed7, #1677ff);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  color: #fff;
+}
+
+/* LEFT MENU */
+.app-header-left .ant-btn {
+  color: #e5edff;
+  font-weight: 500;
+}
+
+.app-header-left .ant-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* RIGHT ACTIONS */
+.app-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sell-btn {
+  background: #f5fefb !important;
+  border-color: #16c784 !important;
+  font-weight: 600;
+  color:#0b5ed7;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+}
