@@ -7,8 +7,10 @@ import {
   ShopOutlined,
 } from "@ant-design/icons";
 import "./AppHeader.css";
+import { useNavigate } from "react-router-dom";
 
 export default function AppHeader() {
+    const navigate = useNavigate();
   return (
     <header className="app-header">
       <div className="app-header-left">
@@ -33,6 +35,7 @@ export default function AppHeader() {
           type="primary"
           icon={<ShoppingCartOutlined />}
           className="sell-btn"
+          onClick={() => navigate("/admin/productSale")}
         >
           Bán hàng
         </Button>

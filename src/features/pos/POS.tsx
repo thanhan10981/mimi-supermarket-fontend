@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./POS.css";
+import { useNavigate } from "react-router-dom";
 
 interface Product {
   id: number;
@@ -34,6 +35,8 @@ const mockProducts: Product[] = [
 ];
 
 export default function POS() {
+  const navigate = useNavigate();
+
   const [bills, setBills] = useState<Bill[]>(() => {
   const saved = localStorage.getItem("pos_bills");
   return saved
@@ -212,7 +215,7 @@ useEffect(() => {
 
       {showMenu && (
         <div className="menu-popup">
-          <div className="menu-item">📦 Quản lý sản phẩm & tồn kho</div>
+          <div className="menu-item" onClick={() => {setShowMenu(false); navigate("/product");}}>📦 Quản lý sản phẩm & tồn kho</div>
           <div className="menu-item">🧾 Quản lý đơn hàng</div>
           <div className="menu-item">👥 Quản lý khách hàng</div>
           <div className="menu-item">📊 Báo cáo & thống kê</div>

@@ -1,13 +1,14 @@
-import { BrowserRouter } from "react-router-dom";
-import AppRoutes from "./routes/AppRoutes";
-import "antd/dist/reset.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import POS from "./features/pos/POS";
+import Product from "./features/product/product";
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
-      <AppRoutes />
+      <Routes>
+        <Route path="/" element={<POS />} />
+        <Route path="/product" element={<Product />} />
+      </Routes>
     </BrowserRouter>
   );
 }
-
-export default App;
