@@ -5,6 +5,7 @@ import { useState, type Key } from "react";
 import { DeleteOutlined } from "@ant-design/icons";
 
 
+
 const { RangePicker } = DatePicker;
 
 const mockData = [
@@ -46,6 +47,7 @@ export default function Product() {
     };
 
   return (
+
     <div className="product-page">
       {/* ===== SIDEBAR ===== */}
       <div className="product-filter">
@@ -338,5 +340,6 @@ export default function Product() {
 
       </div>
     </div>
+    //  </>
   );
 }
