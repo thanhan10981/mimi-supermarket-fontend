@@ -7,15 +7,15 @@ const { Header, Content } = Layout;
 export default function MainLayout() {
   const { pathname } = useLocation();
 
-  // ❗ POS không hiển thị header
-  const hideHeader = pathname.includes("productSale");
+  // Ẩn header cho POS
+  const hideHeader = pathname.startsWith("/admin/productSale");
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
       {!hideHeader && (
         <Header
           style={{
-            position: "fixed",     // 🔥 FIX Ở ĐÂY
+            position: "fixed",
             top: 0,
             left: 0,
             right: 0,
@@ -29,7 +29,12 @@ export default function MainLayout() {
         </Header>
       )}
 
-      <Content style={{ background: "#f5f5f5",paddingTop: hideHeader ? 0 : 56, }}>
+      <Content
+        style={{
+          background: "#f5f5f5",
+          paddingTop: hideHeader ? 0 : 56,
+        }}
+      >
         <Outlet />
       </Content>
     </Layout>

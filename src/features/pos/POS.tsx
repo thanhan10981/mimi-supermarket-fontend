@@ -215,7 +215,7 @@ useEffect(() => {
 
       {showMenu && (
         <div className="menu-popup">
-          <div className="menu-item" onClick={() => {setShowMenu(false); navigate("/product");}}>📦 Quản lý sản phẩm & tồn kho</div>
+          <div className="menu-item" onClick={() => {setShowMenu(false); navigate("/admin/products");}}>📦 Quản lý sản phẩm & tồn kho</div>
           <div className="menu-item">🧾 Quản lý đơn hàng</div>
           <div className="menu-item">👥 Quản lý khách hàng</div>
           <div className="menu-item">📊 Báo cáo & thống kê</div>
