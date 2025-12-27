@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import "./POS.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 interface Product {
   id: number;
   name: string;
   price: number;
   image: string;
+  stock: number;
 }
 
 interface CartItem extends Product {
@@ -19,22 +21,11 @@ interface Bill {
   cart: CartItem[];
 }
 
-const mockProducts: Product[] = [
-  { id: 1, name: "Lọc máy Toyota Vios", price: 500000, image: "" },
-  { id: 2, name: "Dầu nhớt Castrol 10W40", price: 200000, image: "" },
-  { id: 3, name: "Đĩa phanh", price: 300000, image: "" },
-  { id: 4, name: "Thanh giằng", price: 150000, image: "" },
-  { id: 5, name: "Thanh giằng", price: 150000, image: "" },
-  { id: 6, name: "Thanh giằng", price: 150000, image: "" },
-  { id: 7, name: "Thanh giằng", price: 150000, image: "" },
-  { id: 8, name: "Thanh giằng", price: 150000, image: "" },
-  { id: 9, name: "Thanh giằng", price: 150000, image: "" },
-  { id: 10, name: "Thanh giằng", price: 150000, image: "" },
-  { id: 11, name: "Thanh giằng", price: 150000, image: "" },
-  { id: 12, name: "Thanh giằng", price: 150000, image: "" },
-];
+
+
 
 export default function POS() {
+
   const navigate = useNavigate();
 
   const [bills, setBills] = useState<Bill[]>(() => {
@@ -43,23 +34,25 @@ export default function POS() {
     ? JSON.parse(saved)
     : [{ id: 1, name: "Hóa đơn 1", cart: [] }];
 });
-
-
+const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
 const [toast, setToast] = useState<string | null>(null);
+const [showSuccess, setShowSuccess] = useState(false);
 
-
+const [search, setSearch] = useState("");
   const [activeId, setActiveId] = useState(1);
   const [showCheckout, setShowCheckout] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<"cash" | "bank">("cash");
   const [customer, setCustomer] = useState<string | null>(null);
-  const activeBill = bills.find((b) => b.id === activeId)!;
+ const activeBill = bills.find((b) => b.id === activeId);
 
+  const [products, setProducts] = useState<Product[]>([]);
   const addBill = () => {
     const id = Date.now();
     setBills([...bills, { id, name: `Hóa đơn ${bills.length + 1}`, cart: [] }]);
     setActiveId(id);
   };
+
 
 
   const addToCart = (p: Product) => {
@@ -78,16 +71,94 @@ const [toast, setToast] = useState<string | null>(null);
       })
     );
   };
+ const handleConfirmPayment = async () => {
+  if (!activeBill) {
+    setToast("❌ Không tìm thấy hóa đơn");
+    return;
+  }
+
+  if (!totalPrice || totalPrice <= 0) {
+    setToast("❌ Tổng tiền không hợp lệ");
+    return;
+  }
+
+  try {
+    const res = await axios.post("http://127.0.0.1:8001/api/bills", {
+      customer_name: customer || "Khách lẻ",
+      staff_name: "Admin",
+      paid: totalPrice,
+      items: activeBill.cart.map(i => ({
+        product_id: i.id,
+        product_name: i.name,
+        price: i.price,
+        quantity: i.quantity,
+      })),
+    });
+      const billId =
+        res.data?.data?.id ||
+        res.data?.id;
+
+      if (!billId) {
+        console.error("❌ Không lấy được bill_id", res.data);
+        throw new Error("Không lấy được bill_id");
+      }
+      await axios.post("http://127.0.0.1:8002/api/payments", {
+    bill_id: billId,
+    amount: totalPrice,
+    method: paymentMethod,
+  });
+
+  setShowCheckout(false);
+  setShowSuccess(true);
+setBills((prev) => {
+      const remain = prev.filter((b) => b.id !== activeBill.id);
+
+      if (remain.length > 0) {
+        setActiveId(remain[0].id);
+        return remain;
+      }
+
+      const newBill = {
+        id: Date.now(),
+        name: "Hóa đơn 1",
+        cart: [],
+      };
+      setActiveId(newBill.id);
+      return [newBill];
+    });
+  // Tự đóng sau 2 giây
+  setTimeout(() => {
+    setShowSuccess(false);
+  }, 2000);
+    setShowCheckout(false);
+  } catch (err: any) {
+  if (axios.isAxiosError(err)) {
+    if (err.response?.status === 422) {
+      const msg =
+        err.response.data?.message ||
+        "Sản phẩm trong kho không đủ";
+
+      setErrorMessage(msg); 
+      return;
+    }
+  }
+
+  setToast("❌ Thanh toán thất bại");
+}
+
+};
+
+
 const handleCheckout = () => {
-  if (activeBill.cart.length === 0) {
+  if (activeBill?.cart.length === 0) {
     setToast("Vui lòng thêm sản phẩm trước khi thanh toán");
     return;
   }
 
   setShowCheckout(true);
 };
-  const totalQty = activeBill.cart.reduce((s, i) => s + i.quantity, 0);
-  const totalPrice = activeBill.cart.reduce(
+  const totalQty = activeBill?.cart.reduce((s, i) => s + i.quantity, 0);
+  const totalPrice = activeBill?.cart.reduce(
     (s, i) => s + i.quantity * i.price,
     0
   );
@@ -95,7 +166,7 @@ const handleCheckout = () => {
 const changeQty = (id: number, delta: number) => {
   setBills(prev =>
     prev.map(b =>
-      b.id !== activeBill.id
+      b.id !== activeBill?.id
         ? b
         : {
             ...b,
@@ -114,7 +185,7 @@ const changeQty = (id: number, delta: number) => {
 const removeItem = (id: number) => {
   setBills(prev =>
     prev.map(b =>
-      b.id !== activeBill.id
+      b.id !== activeBill?.id
         ? b
         : { ...b, cart: b.cart.filter(i => i.id !== id) }
     )
@@ -136,11 +207,49 @@ const closeBill = (id: number) => {
 };
 
 const [showMenu, setShowMenu] = useState(false);
+useEffect(() => {
+
+  fetchAllProducts();
+}, []);
+
+const fetchAllProducts = async () => {
+  let page = 1;
+  let all: Product[] = [];
+
+  while (true) {
+    const res = await axios.get("http://127.0.0.1:8000/api/products", {
+      params: { page, per_page: 100 },
+    });
+
+    const data = res.data.data;
+
+    all = all.concat(
+      data.map((p: any) => ({
+        id: p.id,
+        name: p.name,
+        price: p.price,
+        stock: p.stock,
+        image: p.primary_image
+          ? `http://127.0.0.1:8000/storage/${p.primary_image.path}`
+          : "",
+      }))
+    );
+
+    if (data.length < 100) break;
+    page++;
+  }
+
+  setProducts(all);
+};
 
 const reloadProducts = () => {
-  // gọi API load lại sản phẩm
-  console.log("Reload products");
+  fetchAllProducts();
 };
+const filteredProducts = products.filter((p) =>
+  p.name.toLowerCase().includes(search.toLowerCase())
+);
+
+
 
 const logout = () => {
   console.log("Logout");
@@ -174,8 +283,12 @@ useEffect(() => {
       <div className="pos-header">
   {/* LEFT */}
   <div className="header-left">
-    <input className="search" placeholder="🔍 Tìm hàng hóa" />
-
+    <input
+  className="search"
+  placeholder="🔍 Tìm hàng hóa"
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+/>
     <div className="bill-tabs">
       {bills.map((b) => (
         <div
@@ -216,7 +329,7 @@ useEffect(() => {
       {showMenu && (
         <div className="menu-popup">
           <div className="menu-item" onClick={() => {setShowMenu(false); navigate("/admin/products");}}>📦 Quản lý sản phẩm & tồn kho</div>
-          <div className="menu-item">🧾 Quản lý đơn hàng</div>
+          <div className="menu-item" onClick={() => {setShowMenu(false); navigate("/admin/bill");}}>🧾 Quản lý đơn hàng</div>
           <div className="menu-item">👥 Quản lý khách hàng</div>
           <div className="menu-item">📊 Báo cáo & thống kê</div>
 
@@ -231,7 +344,6 @@ useEffect(() => {
   </div>
 </div>
 
-
       {/* BODY */}
       <div className="pos-body">
         {/* CART */}
@@ -239,7 +351,7 @@ useEffect(() => {
          <div className="bill-header">
           <div className="bill-title">
             <span className="bill-icon">🧾</span>
-            <span className="bill-name">{activeBill.name}</span>
+            <span className="bill-name">{activeBill?.name}</span>
           </div>
 
           <span className="bill-status">Đang bán</span>
@@ -247,7 +359,7 @@ useEffect(() => {
 
 
           <div className="cart-list">
-            {activeBill.cart.length === 0 && (
+            {activeBill?.cart.length === 0 && (
               <div className="empty-state">
                 <div className="empty-icon">
                   <div className="paper" />
@@ -257,7 +369,7 @@ useEffect(() => {
               </div>
             )}
 
-            {activeBill.cart.map(i => (
+            {activeBill?.cart.map(i => (
               <div key={i.id} className="cart-item">
                 <div className="info">
                   <div className="name">{i.name}</div>
@@ -289,7 +401,7 @@ useEffect(() => {
 
             <div className="summary-total">
               <span>Tổng tiền</span>
-              <strong>{totalPrice.toLocaleString()} đ</strong>
+              <strong>{totalPrice?.toLocaleString()} đ</strong>
             </div>
           </div>
 
@@ -297,36 +409,64 @@ useEffect(() => {
 
         {/* PRODUCTS */}
         <div className="products">
-          {mockProducts.map((p) => (
-            <div
-              key={p.id}
-              className="product-card"
-              onClick={() => addToCart(p)}
-            >
-              <div className="product-image">
-                <img
-                  src={p.image}
-                  alt={p.name}
-                  onError={(e) =>
-                    (e.currentTarget.src = "https://via.placeholder.com/150")
-                  }
-                />
-              </div>
+            {filteredProducts.map((p) => {
+              const outOfStock = p.stock <= 0;
+              const lowStock = p.stock > 0 && p.stock <= 5;
 
-              <div className="product-info">
-                <div className="p-name">{p.name}</div>
-                <div className="p-price">{p.price.toLocaleString()} đ</div>
-              </div>
-            </div>
-          ))}
-        </div>
+              return (
+                <div
+                  key={p.id}
+                  className={`product-card ${
+                    outOfStock ? "disabled" : ""
+                  }`}
+                  onClick={() => {
+                    if (!outOfStock) addToCart(p);
+                  }}
+                >
+                  <div className="product-image">
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      onError={(e) =>
+                        (e.currentTarget.src = "https://placehold.co/150x150")
+                      }
+                    />
+
+                    {/* 🔥 BADGE TỒN KHO */}
+                    <span
+                      className={`stock-badge ${
+                        outOfStock
+                          ? "out"
+                          : lowStock
+                          ? "low"
+                          : "ok"
+                      }`}
+                    >
+                      {outOfStock
+                        ? "Hết hàng"
+                        : `Còn ${p.stock}`}
+                    </span>
+                  </div>
+
+                  <div className="product-info">
+                    <div className="p-name">{p.name}</div>
+                    <div className="p-price">
+                      {p.price.toLocaleString()} đ
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
       </div>
 
       {/* FOOTER */}
       <div className="checkout">
         <button
-          disabled={activeBill.cart.length === 0}
-          onClick={handleCheckout}
+           disabled={!activeBill || activeBill.cart.length === 0}
+  onClick={handleCheckout}
+       
         >
           THANH TOÁN
         </button>
@@ -340,10 +480,10 @@ useEffect(() => {
 
             {/* ORDER INFO */}
             <div className="checkout-info">
-              <div>🧾 {activeBill.name}</div>
+              <div>🧾 {activeBill?.name}</div>
               <div>Số lượng: <b>{totalQty}</b></div>
               <div className="price">
-                Tổng tiền: <span>{totalPrice.toLocaleString()} đ</span>
+                Tổng tiền: <span>{totalPrice?.toLocaleString()} đ</span>
               </div>
             </div>
 
@@ -386,7 +526,7 @@ useEffect(() => {
             {paymentMethod === "bank" && (
               <div className="qr-box">
                 <img
-                  src={`https://img.vietqr.io/image/MB-0123456789-qr_only.png?amount=${totalPrice}&addInfo=HD-${activeBill.id}&accountName=NGUYEN%20VAN%20A`}
+                  src={`https://img.vietqr.io/image/MB-0123456789-qr_only.png?amount=${totalPrice}&addInfo=HD-${activeBill?.id}&accountName=NGUYEN%20VAN%20A`}
                   alt="VietQR"
                   width={180}
                   height={180}
@@ -394,8 +534,8 @@ useEffect(() => {
                 <div className="qr-info">
                   <div><b>Ngân hàng:</b> Vietcombank</div>
                   <div><b>STK:</b> 0123456789</div>
-                  <div><b>Số tiền:</b> {totalPrice.toLocaleString()} đ</div>
-                  <div><b>Nội dung:</b> {activeBill.name}</div>
+                  <div><b>Số tiền:</b> {totalPrice?.toLocaleString()} đ</div>
+                  <div><b>Nội dung:</b> {activeBill?.name}</div>
                 </div>
               </div>
             )}
@@ -405,9 +545,13 @@ useEffect(() => {
               <button className="cancel" onClick={() => setShowCheckout(false)}>
                 Hủy
               </button>
-              <button className="confirm"  >
-                Xác nhận thanh toán
-              </button>
+              <button
+                  className="confirm"
+                  onClick={handleConfirmPayment}
+                >
+                  Xác nhận thanh toán
+                </button>
+
             </div>
 
           </div>
@@ -418,8 +562,44 @@ useEffect(() => {
           ⚠️ {toast}
         </div>
       )}
+{/* ✅ THÔNG BÁO THÀNH CÔNG */}
+    {showSuccess && (
+      <div className="success-overlay">
+        <div className="success-box">
+          <div className="success-icon">✅</div>
+          <h2>Thanh toán thành công</h2>
+          <p>Cảm ơn quý khách!</p>
+        </div>
+      </div>
+    )}
+
+    {/* ❌ LỖI HẾT HÀNG / NGHIỆP VỤ */}
+    {errorMessage && (
+      <div className="error-overlay">
+        <div className="error-box">
+          <div className="error-icon">⚠️</div>
+          <h2>Không thể thanh toán</h2>
+          <p>{errorMessage}</p>
+
+          <button
+            className="error-btn"
+            onClick={() => setErrorMessage(null)}
+          >
+            Đã hiểu
+          </button>
+        </div>
+      </div>
+    )}
+
+    {/* TOAST */}
+    {toast && (
+      <div className="toast">
+        ⚠️ {toast}
+      </div>
+    )}
 
     </div>
     
   );
+  
 }

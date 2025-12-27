@@ -15,10 +15,10 @@ export default function AppHeader() {
     <header className="app-header">
       <div className="app-header-left">
         <Space size={20}>
-          <Button type="text" icon={<ShopOutlined />}>
+          <Button type="text" icon={<ShopOutlined />} onClick={() => navigate("/admin/products")}>
             Hàng hóa
           </Button>
-          <Button type="text" icon={<DollarOutlined />}>
+          <Button type="text" icon={<DollarOutlined />}onClick={() => navigate("/admin/bill")}>
             Hóa đơn
           </Button>
           <Button type="text" icon={<TeamOutlined />}>

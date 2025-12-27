@@ -1,0 +1,229 @@
+/* ===== PAGE ===== */
+.bill-page {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+}
+
+/* ===== SIDEBAR ===== */
+.bill-filter {
+  width: 280px;
+}
+
+.bill-filter .ant-card {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.bill-filter-label {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+/* ===== CONTENT ===== */
+.bill-content {
+  flex: 1;
+}
+
+.bill-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.bill-header h2 {
+  margin: 0;
+}
+
+/* ===== HEADER ACTIONS ===== */
+.bill-header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.bill-header-actions .ant-btn {
+  height: 36px;
+  border-radius: 8px;
+}
+
+.bill-header-actions .ant-btn-primary {
+  background: #1677ff;
+  border-color: #1677ff;
+}
+
+/* ===== SEARCH BOX ===== */
+.bill-search-box {
+  margin-bottom: 8px;
+}
+
+.bill-search-input {
+  height: 40px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+/* ===== DELETE BUTTON ===== */
+.bill-delete-btn {
+  height: 36px;
+  border-radius: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ===== TABLE LOOK ===== */
+.bill-table .ant-table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.bill-table .ant-table-thead > tr > th {
+  background: #f6f8fb;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.bill-table .ant-table-tbody > tr:hover > td {
+  background: #f0f7ff;
+}
+
+.bill-table
+  .ant-table-tbody
+  > tr.ant-table-row-selected
+  > td {
+  background: #e6f4ff !important;
+}
+
+/* ===== CUSTOMER CELL ===== */
+.bill-customer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.bill-customer-name {
+  font-weight: 600;
+}
+.bill-customer-sub {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* ===== DETAIL EXPAND ===== */
+.bill-detail {
+  background: #fff;
+  border-radius: 12px;
+  margin: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.bill-detail-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  font-weight: 600;
+}
+
+.bill-detail-body {
+  display: flex;
+  gap: 24px;
+  padding: 16px;
+  flex-wrap: wrap;
+}
+
+.bill-detail-col {
+  min-width: 220px;
+}
+
+.bill-detail-col p {
+  margin: 4px 0;
+}
+
+.bill-detail-footer {
+  display: flex;
+  gap: 24px;
+  padding: 12px 16px;
+  border-top: 1px solid #eee;
+  color: #555;
+}
+
+/* ===== MODAL ===== */
+.add-bill-modal {
+  top: 60px;
+}
+
+.add-bill-modal .ant-modal-content {
+  border-radius: 12px;
+  padding: 0;
+}
+
+.add-bill-modal .ant-modal-header {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.add-bill-body {
+  display: flex;
+  gap: 24px;
+}
+
+.add-bill-left {
+  width: 220px;
+  padding: 16px;
+}
+
+.add-bill-form {
+  flex: 1;
+  padding: 16px;
+}
+
+.upload-box {
+  border: 1px dashed #d9d9d9;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  background: #fafafa;
+}
+
+.upload-icon {
+  font-size: 40px;
+  color: #91caff;
+  margin-bottom: 8px;
+}
+
+.upload-text {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.upload-sub {
+  font-size: 12px;
+  color: #8c8c8c;
+  margin-bottom: 12px;
+}
+
+.upload-btn {
+  width: 100%;
+}
+
+.price-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.add-bill-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 16px 20px;
+  border-top: 1px solid #eee;
+  background: #fafafa;
+}
+
+.add-bill-footer .ant-btn {
+  min-width: 96px;
+  border-radius: 6px;
+}
