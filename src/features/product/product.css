@@ -345,3 +345,39 @@
   min-width: 96px;
   border-radius: 6px;
 }
+
+/* label + action */
+.product-filter-label.with-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* nút + đẹp */
+.icon-add-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  background: #e6f4ff;
+  color: #1677ff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+/* hover */
+.icon-add-btn:hover {
+  background: #1677ff;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* active */
+.icon-add-btn:active {
+  transform: scale(0.95);
+}
