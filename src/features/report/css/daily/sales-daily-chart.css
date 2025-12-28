@@ -1,0 +1,32 @@
+/* =========================
+   DAILY CHART
+========================= */
+
+.sales-daily-chart .ant-card {
+  border-radius: 12px;
+}
+
+.sales-daily-chart .ant-card-head-title {
+  font-weight: 600;
+}
+
+.sales-daily-chart .recharts-wrapper {
+  font-size: 12px;
+}
+
+.sales-daily-chart .recharts-cartesian-axis-tick text {
+  fill: #6b7280;
+}
+
+/* grid nhẹ */
+.sales-daily-chart .recharts-cartesian-grid line {
+  stroke: #e5e7eb;
+}
+
+/* tooltip */
+.sales-daily-chart .recharts-default-tooltip {
+  border-radius: 8px !important;
+  border: none !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  font-size: 12px;
+}

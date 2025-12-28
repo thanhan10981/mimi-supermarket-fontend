@@ -1,0 +1,82 @@
+/* =========================
+   PAGE
+========================= */
+
+.top-sale-page {
+  padding: 24px;
+  background: #f5f5f5;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.top-sale-page .page-header {
+  margin-bottom: 24px;
+}
+
+.top-sale-page .page-header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.top-sale-page .page-header p {
+  margin: 4px 0 16px;
+  color: #6b7280;
+}
+
+/* =========================
+   FILTERS
+========================= */
+
+.top-sale-page .filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.top-sale-page .filters .ant-select {
+  min-width: 140px;
+}
+
+/* =========================
+   CHARTS
+========================= */
+
+.top-sale-page .ant-card-title {
+  font-weight: 600;
+}
+
+.top-sale-page .recharts-wrapper {
+  margin-top: 8px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.top-sale-footer {
+  margin-top: 24px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #555;
+}
+
+.top-sale-footer p {
+  margin: 0;
+}
+
+.top-sale-footer .totals {
+  display: flex;
+  gap: 24px;
+}
+
+.top-sale-footer .totals b {
+  color: #111827;
+}

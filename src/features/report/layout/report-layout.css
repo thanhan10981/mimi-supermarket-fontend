@@ -1,0 +1,60 @@
+.report-layout {
+  display: flex;
+  min-height: calc(100vh - 64px); /* trừ header */
+  background: #f5f7fb;
+}
+
+/* ===== SIDEBAR ===== */
+.report-sidebar {
+  width: 240px;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  padding: 16px;
+}
+
+.sidebar-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #374151;
+  text-decoration: none;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.sidebar-item:hover {
+  background: #f3f4f6;
+}
+
+.sidebar-item.active {
+  background: #e6f4ff;
+  color: #1677ff;
+  font-weight: 500;
+}
+
+/* ===== MAIN ===== */
+.report-main {
+  flex: 1;
+  padding: 24px;
+}
+
+.sync-btn {
+  cursor: pointer;
+  color: #1677ff;
+  font-weight: 500;
+}
+
+.sync-btn:hover {
+  background-color: #e6f4ff;
+  color: #0958d9;
+}

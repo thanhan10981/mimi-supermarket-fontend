@@ -1,0 +1,347 @@
+/* ===== PAGE ===== */
+.product-page {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+
+}
+
+/* ===== SIDEBAR ===== */
+.product-filter {
+  width: 280px;
+}
+
+.product-filter .ant-card {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.product-filter-label {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+/* ===== CONTENT ===== */
+.product-content {
+  flex: 1;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.product-header h2 {
+  margin: 0;
+}
+
+.product-add-btn {
+  background: linear-gradient(135deg, #1677ff, #4096ff);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  height: 40px;
+  padding: 0 16px;
+  cursor: pointer;
+}
+
+/* ===== TABLE ===== */
+.product-table .ant-table-thead > tr > th {
+  background: #fff;
+  font-weight: 600;
+}
+
+.product-table .ant-table-tbody > tr:hover > td {
+  background: #f0f7ff;
+}
+
+.product-name {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ===== EXPAND ===== */
+.product-expand {
+  display: flex;
+  gap: 16px;
+  background: #fff;
+  padding: 16px;
+  margin: 16px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.product-expand-actions {
+  margin-left: auto;
+}
+
+/* ===== MODAL ===== */
+.product-modal .ant-modal-content {
+  border-radius: 12px;
+}
+
+.product-modal-actions {
+  text-align: right;
+}
+
+.product-modal-actions button + button {
+  margin-left: 8px;
+}
+/* ===== DETAIL EXPAND ===== */
+.product-detail {
+  background: #fff;
+  border-radius: 12px;
+  margin: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.product-detail-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  font-weight: 600;
+}
+
+.product-detail-body {
+  display: flex;
+  gap: 24px;
+  padding: 16px;
+}
+
+.product-detail-info {
+  min-width: 220px;
+}
+
+.product-detail-info p {
+  margin: 4px 0;
+}
+
+.product-detail-footer {
+  display: flex;
+  gap: 24px;
+  padding: 12px 16px;
+  border-top: 1px solid #eee;
+  color: #555;
+}
+
+/* ===== TABLE LOOK ===== */
+.product-table .ant-table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.product-table .ant-table-thead th {
+  background: #f9fafb;
+  font-weight: 600;
+}
+
+.product-table .ant-table-tbody tr:hover td {
+  background: #f0f7ff;
+}
+/* ===== TABLE HEADER ===== */
+.product-table .ant-table-thead > tr > th {
+  background: #f6f8fb;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* ===== ROW HOVER ===== */
+.product-table .ant-table-tbody > tr:hover > td {
+  background: #f0f7ff;
+}
+
+/* ===== ROW SELECTED (CHECKBOX) ===== */
+.product-table
+  .ant-table-tbody
+  > tr.ant-table-row-selected
+  > td {
+  background: #e6f4ff !important;
+}
+
+/* ===== CHECKBOX STYLE ===== */
+.product-table .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #1677ff;
+  border-color: #1677ff;
+}
+
+.product-table .ant-checkbox-inner {
+  border-radius: 4px;
+}
+
+/* ===== EXPAND ICON ===== */
+.product-table .ant-table-row-expand-icon {
+  color: #1677ff;
+}
+
+/* ===== STICKY HEADER ===== */
+.product-table .ant-table-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* ===== SCROLL BODY ===== */
+.product-table .ant-table-body {
+  overflow-y: auto;
+}
+
+/* ===== TABLE WRAPPER ===== */
+.product-table .ant-table {
+  border-radius: 12px;
+}
+
+/* ===== HEADER ACTIONS ===== */
+.product-header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.product-header-actions .ant-btn {
+  height: 36px;
+  border-radius: 8px;
+}
+
+.product-header-actions .ant-btn-primary {
+  background: #1677ff;
+  border-color: #1677ff;
+}
+
+/* ===== SEARCH BOX ===== */
+.product-search-box {
+  margin-bottom: 8px;
+}
+
+/* input wrapper */
+.product-search-input {
+  height: 40px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+/* bỏ gạch dưới / border xấu */
+.product-search-input .ant-input-affix-wrapper {
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: none;
+}
+
+/* icon search */
+.product-search-input .anticon {
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+/* hover */
+.product-search-input .ant-input-affix-wrapper:hover {
+  border-color: #1677ff;
+}
+
+/* focus */
+.product-search-input
+  .ant-input-affix-wrapper-focused {
+  border-color: #1677ff;
+  box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.15);
+}
+
+/* ===== DELETE BUTTON ===== */
+.product-delete-btn {
+  height: 36px;
+  border-radius: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ===== ADD PRODUCT MODAL ===== */
+.add-product-modal {
+  top: 60px; 
+}
+.add-product-modal .ant-modal-content {
+  border-radius: 12px;
+  padding: 0;
+}
+
+.add-product-modal .ant-modal-header {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.add-product-modal .ant-modal-title {
+  font-weight: 600;
+}
+
+/* BODY */
+.add-product-body {
+  display: flex;
+  gap: 24px;
+}
+
+/* LEFT UPLOAD */
+.add-product-upload {
+  width: 220px;
+}
+
+.upload-box {
+  border: 1px dashed #d9d9d9;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  background: #fafafa;
+}
+
+.upload-icon {
+  font-size: 40px;
+  color: #91caff;
+  margin-bottom: 8px;
+}
+
+.upload-text {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.upload-sub {
+  font-size: 12px;
+  color: #8c8c8c;
+  margin-bottom: 12px;
+}
+
+.upload-btn {
+  width: 100%;
+}
+
+/* RIGHT FORM */
+.add-product-form {
+  flex: 1;
+}
+
+.add-product-form .ant-form-item {
+  margin-bottom: 12px;
+}
+
+/* PRICE ROW */
+.price-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* FOOTER */
+.add-product-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 16px 20px;
+  border-top: 1px solid #eee;
+  background: #fafafa;
+}
+
+.add-product-footer .ant-btn {
+  min-width: 96px;
+  border-radius: 6px;
+}

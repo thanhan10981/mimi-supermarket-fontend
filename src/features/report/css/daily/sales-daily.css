@@ -1,0 +1,40 @@
+/* =========================
+   SALES DAILY PAGE
+========================= */
+
+.sales-daily-page {
+  background: #f5f7fb;
+  padding: 24px;
+  min-height: 100vh;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ===== HEADER ===== */
+.sales-daily-page .page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.sales-daily-page .page-header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.sales-daily-page .page-header p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #8c8c8c;
+}
+
+/* ===== FILTERS ===== */
+.sales-daily-page .filters {
+  display: flex;
+  gap: 12px;
+}
+
+.sales-daily-page .filters .ant-select {
+  width: 140px;
+}

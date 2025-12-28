@@ -1,0 +1,99 @@
+/* =========================
+   TOP SALE TABLE CARD
+========================= */
+
+.top-sale-table-card {
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+/* =========================
+   TABLE BASE
+========================= */
+
+.top-sale-table-card .ant-table {
+  background: transparent;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.top-sale-table-card .ant-table-thead > tr > th {
+  background: #f9fafb;
+  font-weight: 600;
+  font-size: 13px;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* =========================
+   BODY CELLS
+========================= */
+
+.top-sale-table-card .ant-table-tbody > tr > td {
+  font-size: 13px;
+  color: #111827;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* zebra rows */
+.top-sale-table-card .ant-table-tbody > tr:nth-child(even) > td {
+  background: #fcfcfd;
+}
+
+/* hover */
+.top-sale-table-card .ant-table-tbody > tr:hover > td {
+  background: #f1f5ff;
+}
+
+/* =========================
+   COLUMN STYLES
+========================= */
+
+/* Rank */
+.top-sale-table-card td:nth-child(1) {
+  font-weight: 700;
+  color: #2563eb;
+}
+
+/* Tên món */
+.top-sale-table-card td:nth-child(2) {
+  font-weight: 600;
+}
+
+/* Số lượng */
+.top-sale-table-card td:nth-child(3) {
+  font-weight: 600;
+  color: #1677ff;
+}
+
+/* Doanh thu */
+.top-sale-table-card td:nth-child(4) {
+  font-weight: 700;
+  color: #16a34a;
+}
+
+/* Giá TB */
+.top-sale-table-card td:nth-child(5) {
+  color: #374151;
+}
+
+/* % tổng */
+.top-sale-table-card td:nth-child(6) {
+  font-weight: 600;
+  color: #9333ea;
+}
+
+/* =========================
+   ALIGNMENT
+========================= */
+
+/* căn phải số */
+.top-sale-table-card
+.ant-table-thead > tr > th:nth-child(n + 3),
+.top-sale-table-card
+.ant-table-tbody > tr > td:nth-child(n + 3) {
+  text-align: right;
+}

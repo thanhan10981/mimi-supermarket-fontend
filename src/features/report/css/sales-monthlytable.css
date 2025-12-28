@@ -1,0 +1,167 @@
+
+/* =========================
+   TABLE
+========================= */
+.sales-table {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.sales-table .ant-table {
+  background: transparent;
+}
+
+.sales-table .ant-table-thead > tr > th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.sales-table .ant-table-tbody > tr > td {
+  border-bottom: 1px solid #f1f5f9;
+  color: #111827;
+}
+
+/* zebra rows */
+.sales-table .ant-table-tbody > tr:nth-child(even) {
+  background: #fcfcfd;
+}
+
+/* hover */
+.sales-table .ant-table-tbody > tr:hover > td {
+  background: #f1f5ff;
+}
+
+/* =========================
+   COLUMNS FORMATTING
+========================= */
+.sales-table td:nth-child(2) {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.sales-table td:nth-child(3) {
+  font-weight: 500;
+}
+/* doanh thu - xanh lá */
+.sales-table .revenue-cell {
+  color: #22c55e; /* xanh lá */
+  font-weight: 600;
+}
+
+/* số đơn - xanh lam */
+.sales-table .orders-cell {
+  color: #1677ff; /* xanh lam Antd */
+  font-weight: 600;
+}
+
+/* =========================
+   LIST
+========================= */
+
+.top-day-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* =========================
+   ITEM
+========================= */
+
+.top-day-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 14px 18px;
+  border-radius: 16px;
+  transition: all 0.2s ease;
+}
+
+/* ===== SUCCESS ===== */
+
+.top-day-item.success {
+  background: #ecfdf5;
+}
+
+.top-day-item.success:hover {
+  background: #d1fae5;
+}
+
+/* ===== DANGER ===== */
+
+.top-day-item.danger {
+  background: #fef2f2;
+}
+
+.top-day-item.danger:hover {
+  background: #fee2e2;
+}
+
+/* =========================
+   RANK BADGE
+========================= */
+
+.top-day-item .rank {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff !important;
+}
+
+/* theo type */
+.top-day-item.success .rank {
+  background: #22c55e;
+}
+
+.top-day-item.danger .rank {
+  background: #ef4444;
+}
+
+/* =========================
+   DATE
+========================= */
+
+.top-day-item .date {
+  flex: 1;
+}
+
+.top-day-item .date div {
+  font-weight: 600;
+  font-size: 14px;
+  color: #111827;
+}
+
+.top-day-item .date small {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* =========================
+   REVENUE
+========================= */
+
+.top-day-item .revenue {
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.top-day-item.success .revenue {
+  color: #16a34a;
+}
+
+.top-day-item.danger .revenue {
+  color: #dc2626;
+}

@@ -1,0 +1,78 @@
+/* =========================
+   TOP SALE SUMMARY PANEL
+========================= */
+
+.top-sale-panel {
+  margin-bottom: 24px;
+}
+
+.panel-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  color: #fff;
+  height: 120px;
+}
+
+/* remove antd default */
+.panel-card .ant-card-body {
+  padding: 20px;
+}
+
+.panel-card .ant-statistic-title {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+}
+
+.panel-card .ant-statistic-content {
+  color: #fff;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+/* =========================
+   GRADIENT BACKGROUND
+========================= */
+
+.panel-card.green {
+  background: linear-gradient(135deg, #14b8a6, #10b981);
+}
+
+.panel-card.blue {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.panel-card.purple {
+  background: linear-gradient(135deg, #a855f7, #9333ea);
+}
+
+/* =========================
+   ICON
+========================= */
+
+.panel-icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 18px;
+}
+
+/* =========================
+   SUB TEXT
+========================= */
+
+.panel-sub {
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+}

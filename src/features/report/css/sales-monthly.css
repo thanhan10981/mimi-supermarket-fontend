@@ -1,0 +1,111 @@
+/* =========================
+   GLOBAL PAGE
+========================= */
+.sales-monthly-page {
+  max-width: 1280px;   /* 👈 khóa độ rộng */
+  margin: 0 auto;
+  background: #f5f7fb;
+  padding: 24px 0px;
+  min-height: 100vh;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.page-desc {
+  margin: 4px 0 0;
+  color: #8c8c8c;
+  font-size: 13px;
+}
+
+.year-select {
+  width: 140px;
+}
+
+.section {
+  margin-top: 24px;
+}
+/* spacing between sections */
+.sales-monthly-page .section {
+  margin-top: 24px;
+}
+
+/* =========================
+   STATS PANEL
+========================= */
+
+/* =========================
+   SALES CARD (CHART)
+========================= */
+
+
+/* =========================
+   RECHARTS OVERRIDES
+========================= */
+.recharts-wrapper {
+  font-size: 12px;
+}
+
+.recharts-cartesian-axis-tick text {
+  fill: #6b7280;
+}
+
+.recharts-tooltip-wrapper {
+  outline: none;
+}
+
+.recharts-default-tooltip {
+  border-radius: 8px !important;
+  border: none !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.recharts-tooltip-label {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+/* =========================
+   SPIN LOADING
+========================= */
+.ant-spin {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1200px) {
+  .stat-card .ant-statistic-content-value {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 992px) {
+  .stats-panel .ant-col {
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sales-monthly-page {
+    padding: 16px;
+  }
+
+  .sales-card .ant-card-body {
+    padding: 16px;
+  }
+}

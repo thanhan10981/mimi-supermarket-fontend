@@ -1,0 +1,73 @@
+/* =========================
+   DAILY STATS
+========================= */
+
+.sales-daily-stats {
+  margin-bottom: 24px;
+}
+
+/* base card */
+.daily-card {
+  border-radius: 16px;
+  border: none;
+  height: 140px;
+  padding: 16px 18px;
+  color: #fff;
+}
+
+.daily-card .ant-card-body {
+  padding: 0;
+}
+
+/* header */
+.daily-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+/* icon */
+.daily-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+/* value */
+.daily-value {
+  margin-top: 14px;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* sub text */
+.daily-sub {
+  margin-top: 4px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* colors */
+.daily-card.green {
+  background: linear-gradient(135deg, #14b8a6, #0d9488);
+}
+
+.daily-card.blue {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.daily-card.purple {
+  background: linear-gradient(135deg, #a855f7, #9333ea);
+}
+
+.daily-card.pink {
+  background: linear-gradient(135deg, #ec4899, #db2777);
+}

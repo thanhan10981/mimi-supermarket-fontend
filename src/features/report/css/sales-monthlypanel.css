@@ -1,0 +1,71 @@
+.stats-panel {
+  margin-bottom: 24px;
+  width: 135%;
+}
+
+/* ===== CARD BASE ===== */
+.stat-card {
+  border-radius: 16px;
+  border: none;
+  height: 130px;
+  padding: 16px 18px;
+  color: #fff;
+  position: relative;
+}
+
+.stat-card .ant-card-body {
+  padding: 0;
+}
+
+/* ===== HEADER ===== */
+.stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+/* icon box */
+.stat-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+/* ===== VALUE ===== */
+.stat-value {
+  margin-top: 14px;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* ===== SUB TEXT ===== */
+.stat-sub {
+  margin-top: 4px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* ===== COLORS ===== */
+.stat-card.blue {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.stat-card.green {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.stat-card.purple {
+  background: linear-gradient(135deg, #a855f7, #9333ea);
+}
+
+.stat-card.orange {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+}
